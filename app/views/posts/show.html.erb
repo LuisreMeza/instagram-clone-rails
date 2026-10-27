@@ -3,7 +3,7 @@
     <div class="post-card show-card">
       <%= image_tag @post.image.url(:large), class: "post-image-large" %>
       <div class="post-info">
-        <h4><%= @post.user.email.split('@').first %></h4>
+        <h4><%= link_to @post.user.email.split('@').first, user_path(@post.user), class: "user-link" %></h4>
         <p class="lead"><%= @post.description %></p>
         <small class="text-muted">Publicado el <%= @post.created_at.strftime("%d de %B, %Y a las %H:%M") %></small>
         

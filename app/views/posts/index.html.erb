@@ -7,7 +7,11 @@
           <%= image_tag post.image.url(:medium), class: "post-image" %>
         <% end %>
         <div class="post-info">
-          <p class="post-description"><strong><%= post.user.email.split('@').first %></strong>: <%= truncate(post.description, length: 60) %></p>
+          <p class="post-description">
+  <%= link_to user_path(post.user), class: "user-link" do %>
+    <strong><%= post.user.email.split('@').first %></strong>
+  <% end %>: <%= truncate(post.description, length: 60) %>
+</p>
           <div class="post-actions">
             <%= link_to "Ver", post_path(post), class: "btn btn-sm btn-primary" %>
             <% if post.user == current_user %>
