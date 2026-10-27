@@ -1,0 +1,103 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$primary-color: #0095f6;
+$bg-color: #fafafa;
+$card-bg: #ffffff;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+body {
+  background-color: $bg-color;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #262626;
+}
+
+.navbar-inverse {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #dbdbdb;
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #262626 !important;
+  }
+  .nav > li > a {
+    color: #262626 !important;
+    font-weight: 600;
+    &:hover { color: $primary-color !important; }
+  }
+}
+
+.post-card {
+  background: $card-bg;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    box-shadow: $shadow;
+    transform: translateY(-2px);
+  }
+}
+
+.post-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.post-image-large {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.post-info {
+  padding: 15px;
+  .post-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  .btn {
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.form-card {
+  background: $card-bg;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  box-shadow: $shadow;
+}
+
+.modern-form {
+  .form-control {
+    border-radius: 4px;
+    border: 1px solid #dbdbdb;
+    padding: 10px;
+    &:focus {
+      border-color: #a8a8a8;
+      box-shadow: none;
+    }
+  }
+  .btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    font-weight: 600;
+    &:hover { background-color: #0081d6; }
+  }
+}

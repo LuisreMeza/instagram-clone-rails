@@ -1,2 +1,22 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h2 class="text-center" style="margin-bottom: 30px;">Feed de Publicaciones</h2>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-4 col-sm-6">
+      <div class="post-card">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.image.url(:medium), class: "post-image" %>
+        <% end %>
+        <div class="post-info">
+          <p class="post-description"><strong><%= post.user.email.split('@').first %></strong>: <%= truncate(post.description, length: 60) %></p>
+          <div class="post-actions">
+            <%= link_to "Ver", post_path(post), class: "btn btn-sm btn-primary" %>
+            <% if post.user == current_user %>
+              <%= link_to "Editar", edit_post_path(post), class: "btn btn-sm btn-warning" %>
+              <%= link_to "Eliminar", post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

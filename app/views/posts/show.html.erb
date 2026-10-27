@@ -1,2 +1,21 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="post-card show-card">
+      <%= image_tag @post.image.url(:large), class: "post-image-large" %>
+      <div class="post-info">
+        <h4><%= @post.user.email.split('@').first %></h4>
+        <p class="lead"><%= @post.description %></p>
+        <small class="text-muted">Publicado el <%= @post.created_at.strftime("%d de %B, %Y a las %H:%M") %></small>
+        
+        <hr>
+        <div class="post-actions">
+          <%= link_to "← Volver al feed", posts_path, class: "btn btn-default" %>
+          <% if @post.user == current_user %>
+            <%= link_to "Editar", edit_post_path(@post), class: "btn btn-warning" %>
+            <%= link_to "Eliminar", post_path(@post), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

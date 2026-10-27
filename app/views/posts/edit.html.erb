@@ -1,2 +1,28 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="form-card">
+      <h2 class="text-center"><%= action_name == 'new' ? 'Crear Nueva Publicación' : 'Editar Publicación' %></h2>
+      <hr>
+      
+      <%= form_for @post, html: { multipart: true, class: "modern-form" } do |f| %>
+        <div class="form-group">
+          <%= f.label :image, "Selecciona una imagen" %>
+          <%= f.file_field :image, class: "form-control-file" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :description, "Descripción" %>
+          <%= f.text_area :description, class: "form-control", rows: 4, placeholder: "Escribe algo interesante (mínimo 10 caracteres)..." %>
+        </div>
+        
+        <div class="text-center">
+          <%= f.submit action_name == 'new' ? 'Publicar' : 'Guardar Cambios', class: "btn btn-primary btn-block btn-lg" %>
+        </div>
+      <% end %>
+      
+      <div class="text-center" style="margin-top: 15px;">
+        <%= link_to "Cancelar y volver al feed", posts_path, class: "text-muted" %>
+      </div>
+    </div>
+  </div>
+</div>
