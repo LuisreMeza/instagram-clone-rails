@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <% if post.likes.exists?(user: current_user) %>
+    <% like = post.likes.find_by(user: current_user) %>
+    <%= link_to post_like_path(post, like), method: :delete, remote: true, class: "btn btn-sm btn-danger like-btn" do %>
+      ❤️ <span class="like-count"><%= post.likes.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true, class: "btn btn-sm btn-outline-danger like-btn" do %>
+      🤍 <span class="like-count"><%= post.likes.count %></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <span class="text-muted">❤️ <%= post.likes.count %></span>
+<% end %>

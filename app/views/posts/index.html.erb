@@ -9,6 +9,9 @@
         <div class="post-info">
           <p class="post-description">
   <%= link_to user_path(post.user), class: "user-link" do %>
+    <div id="like-button-<%= post.id %>">
+  <%= render 'like_button', post: post %>
+</div>
     <strong><%= post.user.email.split('@').first %></strong>
   <% end %>: <%= truncate(post.description, length: 60) %>
 </p>

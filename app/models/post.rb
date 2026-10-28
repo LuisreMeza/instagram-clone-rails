@@ -8,4 +8,6 @@ class Post < ApplicationRecord
   # Validaciones del Punto 20.3 y Punto 2 de tu tarea
   validates :description, presence: { message: "no puede estar vacía" }
   validates :description, length: { minimum: 10, message: "debe tener al menos 10 caracteres" }
+
+  has_many :likes, dependent: :destroy
 end

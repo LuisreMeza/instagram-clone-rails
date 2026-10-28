@@ -1,0 +1,4 @@
+var likeButton = document.getElementById('like-button-<%= @post.id %>');
+if (likeButton) {
+  likeButton.innerHTML = '<%= j render "posts/like_button", post: @post %>';
+}
